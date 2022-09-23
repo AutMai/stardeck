@@ -1,2 +1,2 @@
-# werewolf
-werewolf game in browser
+# stardeck
+A spaceship control application using microservices 
