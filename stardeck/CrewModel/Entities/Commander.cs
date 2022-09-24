@@ -3,10 +3,7 @@ using System.Collections.Generic;
 
 namespace CrewModel.Entities
 {
-    public partial class Commander
+    public partial class Commander : Crew
     {
-        public int CrewMemberId { get; set; }
-
-        public virtual Crew CrewMember { get; set; } = null!;
     }
 }
