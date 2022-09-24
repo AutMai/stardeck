@@ -19,7 +19,7 @@ public class ARepository<TEntity> : IRepository<TEntity> where TEntity : class {
     public async Task<List<TEntity>> ReadAsync(Expression<Func<TEntity, bool>> filter) =>
         await _set.Where(filter).ToListAsync();
 
-    public async Task<List<TEntity>> ReadAllAsync(int start, int count) =>
+    public async Task<List<TEntity>> ReadAsync(int start, int count) =>
         await _set.Skip(start).Take(count).ToListAsync();
 
     public async Task CreateAsync(TEntity entity) {

@@ -13,5 +13,5 @@ public interface IRepository<TEntity> where TEntity : class {
 
     Task<List<TEntity>> ReadAsync(Expression<Func<TEntity, bool>> filter);
 
-    Task<List<TEntity>> ReadAllAsync(int start, int count);
+    Task<List<TEntity>> ReadAsync(int start, int count);
 }
