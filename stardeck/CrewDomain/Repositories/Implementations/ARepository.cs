@@ -1,20 +1,22 @@
 using System.Linq.Expressions;
 using CrewDomain.Repositories.Interfaces;
 using CrewModel.Configurations;
+using CrewModel.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrewDomain.Repositories.Implementations;
 
 public class ARepository<TEntity> : IRepository<TEntity> where TEntity : class {
-    protected TestDbContext _context;
+    protected CrewContext _context;
     protected DbSet<TEntity> _set;
 
-    public ARepository(TestDbContext context) {
+    public ARepository(CrewContext context) {
         _context = context;
         _set = _context.Set<TEntity>();
     }
 
     public async Task<TEntity?> ReadAsync(int id) => await _set.FindAsync(id);
+    public async Task<List<TEntity>> ReadAsync() => await _set.ToListAsync();
 
     public async Task<List<TEntity>> ReadAsync(Expression<Func<TEntity, bool>> filter) =>
         await _set.Where(filter).ToListAsync();
@@ -22,9 +24,10 @@ public class ARepository<TEntity> : IRepository<TEntity> where TEntity : class {
     public async Task<List<TEntity>> ReadAsync(int start, int count) =>
         await _set.Skip(start).Take(count).ToListAsync();
 
-    public async Task CreateAsync(TEntity entity) {
+    public async Task<TEntity> CreateAsync(TEntity entity) {
         _set.Add(entity);
         await _context.SaveChangesAsync();
+        return entity;
     }
 
     public async Task UpdateAsync(TEntity entity) {
