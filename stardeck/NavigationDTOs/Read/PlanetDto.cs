@@ -1,4 +1,4 @@
-﻿namespace NavigationDTOs;
+﻿namespace NavigationDTOs.Read;
 
 public record PlanetDto(
     int LocationId,
@@ -7,6 +7,5 @@ public record PlanetDto(
     decimal CoordY,
     decimal CoordZ,
     sbyte IsExoplanet,
-    int GalaxyId,
     GalaxyDto Galaxy
-);
+) : LocationDto(LocationId, Name, CoordX, CoordY, CoordZ);

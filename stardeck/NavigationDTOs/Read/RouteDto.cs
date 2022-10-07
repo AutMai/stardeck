@@ -1,4 +1,4 @@
-﻿namespace NavigationDTOs;
+﻿namespace NavigationDTOs.Read;
 
 public record RouteDto
 (
@@ -9,6 +9,6 @@ public record RouteDto
     int FromLocationId,
     int ToLocationId,
     sbyte IsHypergate,
-    PlanetDto FromLocation,
-    PlanetDto ToLocation
+    LocationDto FromLocation,
+    LocationDto ToLocation
 );

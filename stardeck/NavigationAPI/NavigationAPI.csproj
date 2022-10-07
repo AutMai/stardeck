@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Mapster" Version="7.4.0-pre03" />
+        <PackageReference Include="Mapster" Version="7.3.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.2">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\NavigationDomain\NavigationDomain.csproj" />
+      <ProjectReference Include="..\NavigationDTOs\NavigationDTOs.csproj" />
       <ProjectReference Include="..\NavigationModel\NavigationModel.csproj" />
     </ItemGroup>
 
