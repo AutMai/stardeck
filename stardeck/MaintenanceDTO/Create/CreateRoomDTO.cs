@@ -4,4 +4,4 @@ public record RoomDTO(
     string Name,
     int ShipId,
     ShipInfoDTO Ship,
-    HashSet<Read.InventoryDTO> Inventory);
+    HashSet<InventoryDTO> Inventory);

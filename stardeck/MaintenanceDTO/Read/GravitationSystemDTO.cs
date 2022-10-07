@@ -6,4 +6,4 @@ public record GravitationSystemDTO(
     string Status,
     int ShipId,
     ShipInfoDTO Ship
-);
+) : ASystemDTO(SystemId, Name, Status, ShipId, Ship);

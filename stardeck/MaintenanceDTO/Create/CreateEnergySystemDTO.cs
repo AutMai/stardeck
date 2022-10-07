@@ -5,4 +5,4 @@ public record EnergySystemDTO(
     string Status,
     int ShipId,
     ShipInfoDTO Ship
-);
+):  ASystemDTO(Name, Status, ShipId, Ship);

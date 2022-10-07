@@ -4,6 +4,5 @@ public abstract record ASystemDTO(
     string Name,
     string Status,
     int ShipId,
-    Read.ShipInfoDTO Ship
+    ShipInfoDTO Ship
 );
-

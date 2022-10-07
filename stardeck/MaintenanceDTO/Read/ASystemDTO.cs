@@ -7,4 +7,3 @@ public record ASystemDTO(
     int ShipId,
     ShipInfoDTO Ship
 );
-
