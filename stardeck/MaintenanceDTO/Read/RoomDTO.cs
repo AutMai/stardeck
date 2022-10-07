@@ -1,4 +1,4 @@
-﻿namespace MaintenanceDTO;
+﻿namespace MaintenanceDTO.Read;
 
 public record RoomDTO(
     int RoomId,

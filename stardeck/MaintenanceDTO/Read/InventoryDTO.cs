@@ -1,4 +1,4 @@
-﻿namespace MaintenanceDTO;
+﻿namespace MaintenanceDTO.Read;
 
 public record InventoryDTO(
     int RessourceId,

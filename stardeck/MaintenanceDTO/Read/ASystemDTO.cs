@@ -1,9 +1,10 @@
-﻿namespace MaintenanceDTO;
+﻿namespace MaintenanceDTO.Read;
 
-public record LifeSupportSystemDTO(
+public record ASystemDTO(
     int SystemId,
     string Name,
     string Status,
     int ShipId,
     ShipInfoDTO Ship
 );
+

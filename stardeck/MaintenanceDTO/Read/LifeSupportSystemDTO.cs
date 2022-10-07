@@ -1,6 +1,6 @@
-﻿namespace MaintenanceDTO;
+﻿namespace MaintenanceDTO.Read;
 
-public record GravitationSystemDTO(
+public record LifeSupportSystemDTO(
     int SystemId,
     string Name,
     string Status,

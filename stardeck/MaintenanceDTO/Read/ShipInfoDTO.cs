@@ -1,9 +1,9 @@
-﻿namespace MaintenanceDTO;
+﻿namespace MaintenanceDTO.Read;
 
 public record ShipInfoDTO(
     int ShipId,
     string Name,
     string CurrentLocation,
-    HashSet<SystemDTO> System,
+    HashSet<ASystemDTO> System,
     HashSet<RoomDTO> Room
 );
