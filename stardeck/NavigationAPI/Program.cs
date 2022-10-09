@@ -13,9 +13,10 @@ using Route = NavigationModel.Entities.Route;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// lazy loading
 
 builder.Services.AddDbContextFactory<NavigationContext>(options =>
-    options.UseMySql(
+    options.UseLazyLoadingProxies().UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 27))
     ));
@@ -24,9 +25,6 @@ builder.Services.AddScoped<IRepository<Location>, LocationRepository>();
 builder.Services.AddScoped<IRepository<NavigationModel.Entities.Route>, RouteRepository>();
 builder.Services.AddScoped<IRepository<Planet>, PlanetRepository>();
 builder.Services.AddScoped<IRepository<Galaxy>, GalaxyRepository>();
-builder.Services.AddScoped<IPlanetRepository, PlanetRepository>();
-builder.Services.AddScoped<IGalaxyRepository, GalaxyRepository>();
-builder.Services.AddScoped<IRouteRepository, RouteRepository>();
 
 TypeAdapterConfig.GlobalSettings.Default.MaxDepth(2).PreserveReference(true);
 

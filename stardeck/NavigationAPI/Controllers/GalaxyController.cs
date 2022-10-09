@@ -10,17 +10,6 @@ namespace NavigationAPI.Controllers;
 [ApiController]
 [Route("/navigation/galaxies")]
 public class GalaxyController : AController<Galaxy, CreateGalaxyDto, GalaxyDto> {
-    private readonly IGalaxyRepository _galaxyRepository;
-
-    public GalaxyController(IRepository<Galaxy> repo, IGalaxyRepository galaxyRepository) : base(repo) {
-        _galaxyRepository = galaxyRepository;
+    public GalaxyController(IRepository<Galaxy> repo) : base(repo) {
     }
-
-    public override async Task<ActionResult<List<GalaxyDto>>> ReadAsync() {
-        var galaxies = await _galaxyRepository.ReadAsync();
-        return galaxies.Select(g => g.Adapt<GalaxyDto>()).ToList();
-    }
-
-    public override async Task<ActionResult<GalaxyDto>> ReadAsync(int id) =>
-        Ok((await _galaxyRepository.ReadAsync(id)).Adapt<GalaxyDto>());
 }
