@@ -18,16 +18,10 @@ public class LocationController : AController<Location, CreateLocationDto, Locat
     [HttpGet("{name}")]
     public async Task<ActionResult<PlanetDto>> GetLocation(string name) {
         var res = (await _repo.ReadAsync(l => l.Name == name)).SingleOrDefault();
-        if (res is Planet p) {
-            var dto = p.Adapt<PlanetDto>();
-            return Ok(dto);
-        }
-        else if (res is Galaxy g) {
-            var dto = g.Adapt<GalaxyDto>();
-            return Ok(dto);
-        }
-        else {
-            return NotFound();
-        }
+        return res switch {
+            Planet p => Ok(p.Adapt<PlanetDto>()),
+            Galaxy g => Ok(g.Adapt<GalaxyDto>()),
+            _ => Ok(res)
+        };
     }
 }
