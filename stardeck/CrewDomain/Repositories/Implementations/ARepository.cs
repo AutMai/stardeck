@@ -2,17 +2,17 @@ using System.Linq.Expressions;
 using CrewDomain.Repositories.Interfaces;
 using CrewModel.Configurations;
 using CrewModel.Entities;
+using Grpc.Net.Client;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrewDomain.Repositories.Implementations;
 
-public class ARepository<TEntity> : IRepository<TEntity> where TEntity : class {
-    protected CrewContext _context;
-    protected DbSet<TEntity> _set;
+public abstract class ARepository<TEntity> : IRepository<TEntity> where TEntity : class {
+    private Crew.Crew.CrewClient _client;
 
-    public ARepository(CrewContext context) {
-        _context = context;
-        _set = _context.Set<TEntity>();
+    protected ARepository() {
+        var channel = GrpcChannel.ForAddress("http://localhost:5151");
+        _client = new Crew.Crew.CrewClient(channel);
     }
 
     public async Task<TEntity?> ReadAsync(int id) => await _set.FindAsync(id);

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "Crew";
+
+package crew;
+
+import "google/protobuf/empty.proto";
+
+service Crew {
+  rpc ReadLogbook (google.protobuf.Empty) returns (stream LogbookReply);
+  rpc ReadSingleEntryLogbook (SingleLogbookEntryRequest) returns (LogbookReply);
+  rpc ReadSingleCrewMember (SingleCrewMemberRequest) returns (CrewReply);
+  rpc ReadCrew (google.protobuf.Empty) returns (CrewReplies);
+}
+
+message SingleLogbookEntryRequest {
+  int32 id = 1;
+}
+
+message LogbookReply {
+  int32 logId = 1;
+  string title = 2;
+  string content = 3;
+  int32 authorId = 4;
+  CrewReply author = 5;
+}
+
+message SingleCrewMemberRequest {
+  int32 crewMemberId = 1;
+}
+
+message CrewReplies {
+  repeated CrewReply crew = 1;
+}
+
+message CrewReply {
+  int32 crewMemberId = 1;
+  int32 health = 2;
+  string role = 3;
+}
