@@ -1,14 +1,9 @@
-using System.Reflection;
 using Mapster;
-using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
-using NavigationAPI.Mapper;
 using NavigationDomain.Repositories.Implementations;
 using NavigationDomain.Repositories.Interfaces;
-using NavigationDTOs.Read;
 using NavigationModel.Configurations;
 using NavigationModel.Entities;
-using Route = NavigationModel.Entities.Route;
 
 var builder = WebApplication.CreateBuilder(args);
 
