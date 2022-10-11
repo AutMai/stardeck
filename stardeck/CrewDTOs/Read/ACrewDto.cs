@@ -1,6 +1,6 @@
 namespace CrewDTOs.Read;
 
-public abstract record ACrewDto(
+public record ACrewDto(
     int CrewMemberId, 
     int Health
 );
