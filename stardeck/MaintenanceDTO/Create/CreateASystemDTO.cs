@@ -1,6 +1,8 @@
-﻿namespace MaintenanceDTO.Create;
+﻿using MaintenanceDTO.Read;
 
-public abstract record ASystemDTO(
+namespace MaintenanceDTO.Create;
+
+public abstract record CreateASystemDTO(
     string Name,
     string Status,
     int ShipId,
