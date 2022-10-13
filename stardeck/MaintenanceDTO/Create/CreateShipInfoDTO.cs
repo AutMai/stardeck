@@ -1,6 +1,8 @@
-﻿namespace MaintenanceDTO.Create;
+﻿using MaintenanceDTO.Read;
 
-public record ShipInfoDTO(
+namespace MaintenanceDTO.Create;
+
+public record CreateShipInfoDTO(
     string Name,
     string CurrentLocation,
     HashSet<ASystemDTO> System,

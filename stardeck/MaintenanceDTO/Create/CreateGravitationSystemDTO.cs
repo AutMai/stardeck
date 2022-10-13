@@ -1,8 +1,10 @@
-﻿namespace MaintenanceDTO.Create;
+﻿using MaintenanceDTO.Read;
 
-public record GravitationSystemDTO(
+namespace MaintenanceDTO.Create;
+
+public record CreateGravitationSystemDTO(
     string Name,
     string Status,
     int ShipId,
     ShipInfoDTO Ship
-) : ASystemDTO(Name, Status, ShipId, Ship);
+) : CreateASystemDTO(Name, Status, ShipId, Ship);

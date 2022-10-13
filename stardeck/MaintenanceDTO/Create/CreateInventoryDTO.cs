@@ -1,6 +1,8 @@
-﻿namespace MaintenanceDTO.Create;
+﻿using MaintenanceDTO.Read;
 
-public record InventoryDTO(
+namespace MaintenanceDTO.Create;
+
+public record CreateInventoryDTO(
     string Name,
     int Amount,
     int RoomId,

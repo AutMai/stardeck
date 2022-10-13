@@ -12,11 +12,13 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MaintenanceDomain\MaintenanceDomain.csproj" />
+      <ProjectReference Include="..\MaintenanceDTO\MaintenanceDTO.csproj" />
       <ProjectReference Include="..\MaintenanceModel\MaintenanceModel.csproj" />
     </ItemGroup>
 

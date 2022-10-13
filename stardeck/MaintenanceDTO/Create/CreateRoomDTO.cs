@@ -1,6 +1,8 @@
-﻿namespace MaintenanceDTO.Create;
+﻿using MaintenanceDTO.Read;
 
-public record RoomDTO(
+namespace MaintenanceDTO.Create;
+
+public record CreateRoomDTO(
     string Name,
     int ShipId,
     ShipInfoDTO Ship,
