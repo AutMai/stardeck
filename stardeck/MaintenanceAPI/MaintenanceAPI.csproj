@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EventBusConnection\EventBusConnection.csproj" />
       <ProjectReference Include="..\MaintenanceDomain\MaintenanceDomain.csproj" />
       <ProjectReference Include="..\MaintenanceDTO\MaintenanceDTO.csproj" />
       <ProjectReference Include="..\MaintenanceModel\MaintenanceModel.csproj" />
