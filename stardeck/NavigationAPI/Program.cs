@@ -1,3 +1,4 @@
+using EventBusConnection;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using NavigationDomain.Repositories.Implementations;
@@ -20,6 +21,9 @@ builder.Services.AddScoped<IRepository<Location>, LocationRepository>();
 builder.Services.AddScoped<IRepository<NavigationModel.Entities.Route>, RouteRepository>();
 builder.Services.AddScoped<IRepository<Planet>, PlanetRepository>();
 builder.Services.AddScoped<IRepository<Galaxy>, GalaxyRepository>();
+
+builder.Services.AddSingleton<IEventBusClient, EventBusClient>();
+
 
 TypeAdapterConfig.GlobalSettings.Default.MaxDepth(2).PreserveReference(true);
 

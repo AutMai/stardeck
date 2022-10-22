@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using EventBusConnection;
 using MaintenanceDomain.Repositories.Interfaces;
 using MaintenanceDTO.Create;
@@ -11,22 +14,16 @@ namespace MaintenanceAPI.Controllers;
 [ApiController]
 [Route("/maintenance/shipinfo")]
 public class ShipInfoController : AController<ShipInfo, CreateShipInfoDTO, ShipInfoDTO> {
-    public ShipInfoController(IRepository<ShipInfo> repo) : base(repo)
-    {
-    }
-    
-    [HttpGet("/test")]
-    public async Task<ActionResult<IEnumerable<ShipInfoDTO>>> Get() {
-        var c = new Connector();
-        c.Init();
-        var model = c.GetModel();
-        
-        var properties = model.CreateBasicProperties();
-        properties.Persistent = false;
-        
-        byte[] messagebuffer = Encoding.Default.GetBytes("Direct Message");
+    private readonly IEventBusClient _eventBusClient;
 
-        model.BasicPublish("stardeckExchange", "", false, properties, messagebuffer);
-        return Ok(await _repo.ReadAsync(1));
+    public ShipInfoController(IRepository<ShipInfo> repo, IEventBusClient eventBusClient) : base(repo) {
+        _eventBusClient = eventBusClient;
+    }
+
+    [HttpPost("/test2")]
+    public async Task<ActionResult<ShipInfo>> Get2(string si) {
+        var message = JsonSerializer.Serialize(si);
+        _eventBusClient.Publish(message);
+        return Ok(si);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using EventBusConnection;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using NavigationDomain.Repositories.Interfaces;
 using NavigationDTOs.Create;
@@ -10,6 +11,6 @@ namespace NavigationAPI.Controllers;
 [ApiController]
 [Route("/navigation/galaxies")]
 public class GalaxyController : AController<Galaxy, CreateGalaxyDto, GalaxyDto> {
-    public GalaxyController(IRepository<Galaxy> repo) : base(repo) {
+    public GalaxyController(IRepository<Galaxy> repo, IEventBusClient eventBusClient) : base(repo, eventBusClient) {
     }
 }

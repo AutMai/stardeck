@@ -18,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\EventBusConnection\EventBusConnection.csproj" />
       <ProjectReference Include="..\NavigationDomain\NavigationDomain.csproj" />
       <ProjectReference Include="..\NavigationDTOs\NavigationDTOs.csproj" />
       <ProjectReference Include="..\NavigationModel\NavigationModel.csproj" />

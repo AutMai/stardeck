@@ -1,9 +1,17 @@
+using System;
+using EventBusConnection;
+using EventBusConnection.EventsProcessing;
+using MaintenanceAPI.EventProcessors;
 using MaintenanceDomain.Repositories.Implementations;
 using MaintenanceDomain.Repositories.Interfaces;
 using MaintenanceModel.Configurations;
 using MaintenanceModel.Entities;
 using Mapster;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +29,10 @@ builder.Services.AddScoped<IRepository<MaintenanceModel.Entities.System>, System
 builder.Services.AddScoped<IRepository<EnergySystem>, EnergySystemRepository>();
 builder.Services.AddScoped<IRepository<LifeSupportSystem>, LifeSupportSystemRepository>();
 builder.Services.AddScoped<IRepository<GravitationSystem>, GravitationSystemRepository>();
+
+builder.Services.AddSingleton<IEventBusClient, EventBusClient>();
+builder.Services.AddSingleton<IEventProcessor, EventProcessor<MaintenanceEventVisitor>>();
+builder.Services.AddHostedService<EventSubscriber>();
 
 TypeAdapterConfig.GlobalSettings.Default.MaxDepth(2).PreserveReference(true);
 

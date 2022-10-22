@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using EventBusConnection;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using NavigationDomain.Repositories.Interfaces;
 using NavigationDTOs;
@@ -11,6 +12,6 @@ namespace NavigationAPI.Controllers;
 [ApiController]
 [Route("/navigation/planets")]
 public class PlanetController : AController<Planet, CreatePlanetDto, PlanetDto> {
-    public PlanetController(IRepository<Planet> repo) : base(repo) {
+    public PlanetController(IRepository<Planet> repo, IEventBusClient eventBusClient) : base(repo, eventBusClient) {
     }
 }
