@@ -22,7 +22,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CrewDTOs\CrewDTOs.csproj" />
       <ProjectReference Include="..\MaintenanceDomain\MaintenanceDomain.csproj" />
+      <ProjectReference Include="..\MaintenanceDTO\MaintenanceDTO.csproj" />
     </ItemGroup>
 
 </Project>

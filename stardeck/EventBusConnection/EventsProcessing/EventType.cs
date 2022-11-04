@@ -3,8 +3,8 @@
 public enum EventType {
     Undetermined,
     IntrudersDetected,
-    EngineDamaged,
-    EngineRepaired,
+    SystemDamaged,
+    SystemRepaired,
     DepartedFromLocation,
     ArrivedAtLocation
 }

@@ -1,4 +1,5 @@
-﻿using MaintenanceDomain.Repositories.Interfaces;
+﻿using EventBusConnection;
+using MaintenanceDomain.Repositories.Interfaces;
 using MaintenanceDTO.Create;
 using MaintenanceDTO.Read;
 using MaintenanceModel.Entities;
@@ -10,7 +11,7 @@ namespace MaintenanceAPI.Controllers;
 [Route("/maintenance/inventory")]
 public class InventoryController : AController<Inventory, CreateInventoryDTO, InventoryDTO>
 {
-    public InventoryController(IRepository<Inventory> repo) : base(repo)
+    public InventoryController(IRepository<Inventory> repo, IEventBusClient eventBusClient) : base(repo, eventBusClient)
     {
     }
 }

@@ -22,6 +22,8 @@ public class EventProcessor<TVisitor> : IEventProcessor where TVisitor : IVisito
         BaseEvent e = (eventType switch {
             EventType.ArrivedAtLocation => JsonSerializer.Deserialize<ArrivedAtLocationEvent>(message),
             EventType.DepartedFromLocation => JsonSerializer.Deserialize<DepartedFromLocationEvent>(message),
+            EventType.SystemDamaged => JsonSerializer.Deserialize<SystemDamagedEvent>(message),
+            EventType.SystemRepaired => JsonSerializer.Deserialize<SystemRepairedEvent>(message),
             _ => JsonSerializer.Deserialize<BaseEvent>(message)
         })!;
         e.Accept(new TVisitor {ScopeFactory = ScopeFactory});

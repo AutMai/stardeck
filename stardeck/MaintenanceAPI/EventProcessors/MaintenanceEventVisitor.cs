@@ -1,26 +1,34 @@
 ﻿using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
+using EventBusConnection;
 using EventBusConnection.EventsProcessing;
 using EventBusConnection.EventsProcessing.Events;
 using MaintenanceDomain.Repositories.Interfaces;
 using MaintenanceModel.Entities;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
+using System = MaintenanceModel.Entities.System;
 
 namespace MaintenanceAPI.EventProcessors;
 
-public class MaintenanceEventVisitor : IVisitor {
+public class MaintenanceEventVisitor : IVisitor
+{
     public IServiceScopeFactory ScopeFactory { get; init; }
 
-    public MaintenanceEventVisitor() {
+    public MaintenanceEventVisitor()
+    {
     }
 
-    public MaintenanceEventVisitor(IServiceScopeFactory scopeFactory) {
+    public MaintenanceEventVisitor(IServiceScopeFactory scopeFactory)
+    {
         ScopeFactory = scopeFactory;
     }
 
 
-    public async Task Visit(ArrivedAtLocationEvent e) {
+    public async Task Visit(ArrivedAtLocationEvent e)
+    {
         Console.WriteLine("Arrived at location: " + e.Location);
         using var scope = ScopeFactory.CreateScope();
         var repo = scope.ServiceProvider.GetRequiredService<IRepository<ShipInfo>>();
@@ -30,7 +38,8 @@ public class MaintenanceEventVisitor : IVisitor {
         await repo.UpdateAsync(shipInfo);
     }
 
-    public async Task Visit(DepartedFromLocationEvent e) {
+    public async Task Visit(DepartedFromLocationEvent e)
+    {
         Console.WriteLine("Departed from location: " + e.Location);
         using var scope = ScopeFactory.CreateScope();
         var repo = scope.ServiceProvider.GetRequiredService<IRepository<ShipInfo>>();
@@ -42,16 +51,20 @@ public class MaintenanceEventVisitor : IVisitor {
 
     public Task Visit(SystemDamagedEvent token)
     {
-        throw new NotImplementedException();
+        return Task.CompletedTask;
     }
 
-    public Task Visit(SystemRepairedEvent token)
+    public async Task Visit(SystemRepairedEvent token)
     {
-        throw new NotImplementedException();
+        using var scope = ScopeFactory.CreateScope();
+        var repo = scope.ServiceProvider.GetRequiredService<IRepository<MaintenanceModel.Entities.System>>();
+
+        var system = (await repo.ReadAsync(s => s.SystemId == token.System.SystemId)).FirstOrDefault();
+        system.Status = "Operational";
+        await repo.UpdateAsync(system);
     }
 
-    public Task Visit(IntrudersDetectedEvent token)
-    {
-        throw new NotImplementedException();
+    public Task Visit(IntrudersDetectedEvent token) {
+        return Task.CompletedTask;
     }
 }

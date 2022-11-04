@@ -3,6 +3,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using EventBusConnection;
+using EventBusConnection.EventsProcessing;
+using EventBusConnection.EventsProcessing.Events;
 using MaintenanceDomain.Repositories.Interfaces;
 using MaintenanceDTO.Create;
 using MaintenanceDTO.Read;
@@ -16,7 +18,7 @@ namespace MaintenanceAPI.Controllers;
 public class ShipInfoController : AController<ShipInfo, CreateShipInfoDTO, ShipInfoDTO> {
     private readonly IEventBusClient _eventBusClient;
 
-    public ShipInfoController(IRepository<ShipInfo> repo, IEventBusClient eventBusClient) : base(repo) {
+    public ShipInfoController(IRepository<ShipInfo> repo, IEventBusClient eventBusClient) : base(repo, eventBusClient) {
         _eventBusClient = eventBusClient;
     }
 
@@ -26,4 +28,6 @@ public class ShipInfoController : AController<ShipInfo, CreateShipInfoDTO, ShipI
         _eventBusClient.Publish(message);
         return Ok(si);
     }
+    
+    
 }

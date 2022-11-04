@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventBusConnection;
 using MaintenanceDomain.Repositories.Interfaces;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +13,11 @@ public abstract class AController<TEntity, TCreateDto, TDto> : ControllerBase
     where TCreateDto : class
     where TDto : class {
     protected IRepository<TEntity> _repo;
+    protected IEventBusClient _eventBusClient;
 
-    public AController(IRepository<TEntity> repo) {
+    public AController(IRepository<TEntity> repo, IEventBusClient eventBusClient) {
         _repo = repo;
+        _eventBusClient = eventBusClient;
     }
 
     [HttpGet]
@@ -30,7 +33,7 @@ public abstract class AController<TEntity, TCreateDto, TDto> : ControllerBase
         Ok((await _repo.CreateAsync(e.Adapt<TEntity>())).Adapt<TDto>());
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult> UpdateAsync(int id, TDto e) {
+    public virtual async Task<ActionResult> UpdateAsync(int id, TDto e) {
         var e2 = await _repo.ReadAsync(id);
         if (e2 is null) return NotFound();
 

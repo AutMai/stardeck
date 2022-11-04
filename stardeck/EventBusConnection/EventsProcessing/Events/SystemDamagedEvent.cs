@@ -1,10 +1,12 @@
-﻿namespace EventBusConnection.EventsProcessing.Events;
+﻿using MaintenanceDTO.Read;
 
-public class SystemRepairedEvent : BaseEvent {
-    public string Location { get; set; }
+namespace EventBusConnection.EventsProcessing.Events;
+
+public class SystemDamagedEvent : BaseEvent {
+    public ASystemDTO? System { get; set; }
 
 
-    public SystemRepairedEvent() {
+    public SystemDamagedEvent() {
         
     }
 
@@ -13,7 +15,7 @@ public class SystemRepairedEvent : BaseEvent {
         visitor.Visit(this);
     }
 
-    public SystemRepairedEvent(string type, string location) : base(type) {
-        Location = location;
+    public SystemDamagedEvent(string type, ASystemDTO? system) : base(type) {
+        System = system;
     }
 }

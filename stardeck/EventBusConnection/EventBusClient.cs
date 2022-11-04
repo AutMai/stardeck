@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 
-namespace EventBusConnection; 
+namespace EventBusConnection;
 
 public class EventBusClient : IEventBusClient {
     private readonly string _exchange;
@@ -22,13 +22,11 @@ public class EventBusClient : IEventBusClient {
             _channel.ExchangeDeclare(
                 _exchange, ExchangeType.Fanout
             );
-            _connection.ConnectionShutdown +=
-                ShutDownMessageBroker;
+            _connection.ConnectionShutdown += ShutDownMessageBroker;
         }
         catch (Exception ex) {
             Console.WriteLine($"failed: {ex}");
         }
-
     }
 
     public void Publish(string message) {
