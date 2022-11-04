@@ -37,4 +37,9 @@ public class MaintenanceEventVisitor : IVisitor {
     {
         throw new NotImplementedException();
     }
+
+    public Task Visit(IntrudersDetectedEvent token)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -33,4 +33,11 @@ public class CrewEventVisitor : IVisitor {
     {
         throw new NotImplementedException();
     }
+
+    public async Task Visit(IntrudersDetectedEvent token)
+    {
+        Console.WriteLine("Send Guards");
+        using var scope = ScopeFactory.CreateScope();
+
+    }
 }

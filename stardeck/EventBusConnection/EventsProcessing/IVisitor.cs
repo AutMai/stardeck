@@ -10,4 +10,5 @@ public interface IVisitor
     Task Visit(DepartedFromLocationEvent token);
     Task Visit(SystemDamagedEvent token);
     Task Visit(SystemRepairedEvent token);
+    Task Visit(IntrudersDetectedEvent token);
 }
