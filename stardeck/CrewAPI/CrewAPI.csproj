@@ -19,6 +19,7 @@
       <ProjectReference Include="..\CrewDomain\CrewDomain.csproj" />
       <ProjectReference Include="..\CrewDTOs\CrewDTOs.csproj" />
       <ProjectReference Include="..\CrewModel\CrewModel.csproj" />
+      <ProjectReference Include="..\EventBusConnection\EventBusConnection.csproj" />
     </ItemGroup>
 
 </Project>

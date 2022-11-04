@@ -39,4 +39,14 @@ public class MaintenanceEventVisitor : IVisitor {
         shipInfo.CurrentLocation = "Space";
         await repo.UpdateAsync(shipInfo);
     }
+
+    public Task Visit(SystemDamagedEvent token)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task Visit(SystemRepairedEvent token)
+    {
+        throw new NotImplementedException();
+    }
 }
