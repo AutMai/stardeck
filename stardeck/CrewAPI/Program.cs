@@ -1,4 +1,7 @@
+using CrewAPI.EventProcessors;
 using CrewModel.Configurations;
+using EventBusConnection;
+using EventBusConnection.EventsProcessing;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +13,9 @@ builder.Services.AddDbContextFactory<CrewContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 27))
     ));
 
+builder.Services.AddSingleton<IEventBusClient, EventBusClient>();
+builder.Services.AddSingleton<IEventProcessor, EventProcessor<CrewEventVisitor>>();
+builder.Services.AddHostedService<EventSubscriber>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
