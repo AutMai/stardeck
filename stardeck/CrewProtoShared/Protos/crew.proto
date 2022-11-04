@@ -11,6 +11,7 @@ service Crew {
   rpc ReadSingleEntryLogbook (SingleLogbookEntryRequest) returns (LogbookReply);
   rpc ReadSingleCrewMember (SingleCrewMemberRequest) returns (CrewReply);
   rpc ReadCrew (google.protobuf.Empty) returns (CrewReplies);
+  rpc CreateLogbookEntry (LogbookEntryRequest) returns (LogbookReply);
 }
 
 message SingleLogbookEntryRequest {
@@ -37,4 +38,10 @@ message CrewReply {
   int32 crewMemberId = 1;
   int32 health = 2;
   string role = 3;
+}
+
+message LogbookEntryRequest {
+  string title = 1;
+  string content = 2;
+  int32 authorId = 3;
 }
