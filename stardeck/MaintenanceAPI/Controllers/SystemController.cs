@@ -46,4 +46,11 @@ public class SystemController : AController<MaintenanceModel.Entities.System, Cr
         }
         return Ok();
     }
+    
+    [HttpGet("/lifesupport/check")]
+    public async Task<ActionResult> CheckCrewMemberHealthAsync() {
+        var message = JsonSerializer.Serialize(new CheckCrewMemberHealthEvent());
+        _eventBusClient.Publish(message);
+        return Ok();
+    }
 }
