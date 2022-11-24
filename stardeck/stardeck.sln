@@ -28,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrewGrpcService", "CrewGrpc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrewProtoShared", "CrewProtoShared\CrewProtoShared.csproj", "{AB226A9E-668C-4B65-8514-F0144295EED3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{188D1671-F097-4D6A-8BAB-836E6C5655D3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_EventBus", "_EventBus", "{188D1671-F097-4D6A-8BAB-836E6C5655D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusConnection", "EventBusConnection\EventBusConnection.csproj", "{B8FD8A4D-F0D0-49EE-A235-96FBB4DC3D61}"
 EndProject

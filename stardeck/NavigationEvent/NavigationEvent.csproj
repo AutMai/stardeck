@@ -15,7 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Eventhandlers" />
+      <Folder Include="EventHandlers" />
     </ItemGroup>
 
 </Project>
