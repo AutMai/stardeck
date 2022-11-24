@@ -1,8 +1,7 @@
-using CrewAPI.EventProcessors;
 using CrewEvent;
 using CrewModel.Configurations;
 using EventBusConnection.Client;
-using EventBusConnection.Events;
+using EventBusConnection.Event;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

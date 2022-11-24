@@ -1,6 +1,6 @@
 using EventBusConnection;
 using EventBusConnection.Client;
-using EventBusConnection.Events;
+using EventBusConnection.Event;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using NavigationDomain.Repositories.Implementations;

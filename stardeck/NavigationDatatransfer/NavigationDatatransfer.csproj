@@ -8,7 +8,10 @@
 
     <ItemGroup>
       <Folder Include="Controller" />
-      <Folder Include="Events" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EventBusConnection\EventBusConnection.csproj" />
     </ItemGroup>
 
 </Project>

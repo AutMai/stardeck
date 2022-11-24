@@ -1,18 +1,12 @@
-using System;
-using EventBusConnection;
 using EventBusConnection.Client;
-using EventBusConnection.Events;
+using EventBusConnection.Event;
 using MaintenanceDomain.Repositories.Implementations;
 using MaintenanceDomain.Repositories.Interfaces;
 using MaintenanceEvent;
 using MaintenanceModel.Configurations;
 using MaintenanceModel.Entities;
 using Mapster;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 

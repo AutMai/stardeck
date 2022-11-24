@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using EventBusConnection.Events;
+using EventBusConnection.Event;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;

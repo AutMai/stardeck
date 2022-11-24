@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EventBusConnection;
 using EventBusConnection.Client;
+using EventBusConnection.Event.Events;
 using MaintenanceDatatransfer.Controller.Create;
 using MaintenanceDatatransfer.Controller.Read;
 using MaintenanceDomain.Repositories.Interfaces; 
@@ -38,14 +39,11 @@ public class SystemController : AController<MaintenanceModel.Entities.System, Cr
         var system = await _repo.ReadAsync(id);
         if (system == null) return NotFound();
         system.Status = status;
-        var systemDto = system.Adapt<ASystemDTO>();
-        await base.UpdateAsync(id, systemDto);
+        await base.UpdateAsync(id, system.Adapt<ASystemDTO>());
         if (status == "Damaged") {
-            var message =
-                JsonSerializer.Serialize(new SystemDamagedEvent(EventType.SystemDamaged.ToString(), systemDto));
+            var message = JsonSerializer.Serialize(new SystemDamagedEvent(system.SystemId));
             _eventBusClient.Publish(message);
         }
-
         return Ok();
     }
 }

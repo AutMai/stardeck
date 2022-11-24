@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventBusConnection.Events;
+namespace EventBusConnection.Event;
 
 public class AEventProcessor : Dictionary<string, IEventHandler>, IEventProcessor {
     protected readonly IServiceScopeFactory ScopeFactory;
@@ -14,6 +14,6 @@ public class AEventProcessor : Dictionary<string, IEventHandler>, IEventProcesso
         var eventRecord = JsonSerializer.Deserialize<EventRecord>(eventMessage);
         var eventHandler = this[eventRecord.Type];
 
-        eventHandler.Execute();
+        eventHandler.Execute(ScopeFactory, eventMessage);
     }
 }

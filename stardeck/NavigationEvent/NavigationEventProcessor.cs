@@ -1,4 +1,4 @@
-﻿using EventBusConnection.Events;
+﻿using EventBusConnection.Event;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace NavigationEvent;
