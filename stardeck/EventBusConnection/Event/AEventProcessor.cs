@@ -12,8 +12,9 @@ public class AEventProcessor : Dictionary<string, IEventHandler>, IEventProcesso
 
     public void ProcessEvent(string eventMessage) {
         var eventRecord = JsonSerializer.Deserialize<EventRecord>(eventMessage);
+        if (!ContainsKey(eventRecord.Type)) return;
+        
         var eventHandler = this[eventRecord.Type];
-
         eventHandler.Execute(ScopeFactory, eventMessage);
     }
 }
