@@ -26,5 +26,8 @@ public class ArrivedAtLocationEventHandler : IEventHandler {
         if (e.location == "HospitalIsland") {
             eventPublisher.Publish(JsonSerializer.Serialize(new HealCrewMemberEvent(new List<int>())));
         }
+        if (e.location == "Baumax") {
+            eventPublisher.Publish(JsonSerializer.Serialize(new RefillInventoryEvent()));
+        }
     }
 }

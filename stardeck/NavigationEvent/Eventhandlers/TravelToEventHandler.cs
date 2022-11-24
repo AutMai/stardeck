@@ -19,6 +19,6 @@ public class TravelToEventHandler : IEventHandler {
         int shipId = (await shipRepository.ReadAsync()).First().ShipId;
 
         eventPublisher.Publish(JsonSerializer.Serialize(new ArrivedAtLocationEvent(
-            (await shipRepository.ReadAsync()).First().ShipId, "HospitalIsland")));
+            (await shipRepository.ReadAsync()).First().ShipId, e.location)));
     }
 }

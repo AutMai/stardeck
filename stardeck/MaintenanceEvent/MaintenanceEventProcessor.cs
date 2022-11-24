@@ -9,6 +9,9 @@ public class MaintenanceEventProcessor : AEventProcessor {
         this["ARRIVED_AT_LOCATION"] = new ArrivedAtLocationEventHandler();
         this["DEPARTED_FROM_LOCATION"] = new DepartedFromLocationEventHandler();
         this["SYSTEM_REPAIRED"] = new SystemRepairedEventHandler();
+        this["STOCKTAKING"] = new StocktakingEventHandler();
+        this["REFILL_INVENTORY"] = new RefillInventoryEventHandler();
+        this["LACK_OF_ITEM"] = new LackOfItemEventHandler();
         this["CREW_MEMBER_CRITICAL_HEALTH"] = new CrewMemberCriticalHealthEventHandler();
     }
 }

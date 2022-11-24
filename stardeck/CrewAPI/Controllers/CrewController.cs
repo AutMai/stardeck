@@ -1,5 +1,8 @@
-﻿using Crew;
+﻿using System.Text.Json;
+using Crew;
 using CrewDatatransfer.Controller.Read;
+using EventBusConnection.Client;
+using EventBusConnection.Event.Events;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using Mapster;
@@ -10,8 +13,10 @@ namespace CrewAPI.Controllers;
 
 public class CrewController : ControllerBase {
     private readonly Crew.Crew.CrewClient _client;
+    private readonly IEventPublisher _eventBusClient;
 
-    public CrewController() {
+    public CrewController(IEventPublisher eventBusClient) {
+        _eventBusClient = eventBusClient;
         var channel = GrpcChannel.ForAddress("http://localhost:5151");
         _client = new Crew.Crew.CrewClient(channel);
     }
@@ -64,5 +69,12 @@ public class CrewController : ControllerBase {
             Health = crew.Health,
         });
         return Ok(res);
+    }
+    
+    [HttpPost("/droid/startStocktaking")]
+    public async Task<ActionResult> StartStocktakingAsync() {
+        var message = JsonSerializer.Serialize(new StocktakingEvent());
+        _eventBusClient.Publish(message);
+        return Ok();
     }
 }
