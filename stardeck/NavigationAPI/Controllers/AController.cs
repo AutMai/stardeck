@@ -1,4 +1,5 @@
 ﻿using EventBusConnection;
+using EventBusConnection.Client;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using NavigationDomain.Repositories.Interfaces;
@@ -9,9 +10,9 @@ namespace NavigationAPI.Controllers {
         where TCreateDto : class
         where TDto : class {
         protected IRepository<TEntity> Repo;
-        protected IEventBusClient EventBusClient;
+        protected IEventPublisher EventBusClient;
 
-        public AController(IRepository<TEntity> repo, IEventBusClient eventBusClient) {
+        public AController(IRepository<TEntity> repo, IEventPublisher eventBusClient) {
             Repo = repo;
             EventBusClient = eventBusClient;
         }

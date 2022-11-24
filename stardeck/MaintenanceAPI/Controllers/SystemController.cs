@@ -1,11 +1,10 @@
 ﻿using System.Text.Json;
 using System.Threading.Tasks;
 using EventBusConnection;
-using EventBusConnection.EventsProcessing;
-using EventBusConnection.EventsProcessing.Events;
-using MaintenanceDomain.Repositories.Interfaces;
-using MaintenanceDTO.Create;
-using MaintenanceDTO.Read;
+using EventBusConnection.Client;
+using MaintenanceDatatransfer.Controller.Create;
+using MaintenanceDatatransfer.Controller.Read;
+using MaintenanceDomain.Repositories.Interfaces; 
 using MaintenanceModel.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +14,9 @@ namespace MaintenanceAPI.Controllers;
 [ApiController]
 [Route("/maintenance/systems")]
 public class SystemController : AController<MaintenanceModel.Entities.System, CreateASystemDTO, ASystemDTO> {
-    private readonly IEventBusClient _eventBusClient;
+    private readonly IEventPublisher _eventBusClient;
 
-    public SystemController(IRepository<MaintenanceModel.Entities.System> repo, IEventBusClient eventBusClient) : base(
+    public SystemController(IRepository<MaintenanceModel.Entities.System> repo, IEventPublisher eventBusClient) : base(
         repo, eventBusClient) {
         _eventBusClient = eventBusClient;
     }

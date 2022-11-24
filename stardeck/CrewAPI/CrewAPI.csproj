@@ -16,8 +16,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CrewDatatransfer\CrewDatatransfer.csproj" />
       <ProjectReference Include="..\CrewDomain\CrewDomain.csproj" />
-      <ProjectReference Include="..\CrewDTOs\CrewDTOs.csproj" />
+      <ProjectReference Include="..\CrewEvent\CrewEvent.csproj" />
       <ProjectReference Include="..\CrewModel\CrewModel.csproj" />
       <ProjectReference Include="..\EventBusConnection\EventBusConnection.csproj" />
     </ItemGroup>

@@ -1,7 +1,8 @@
 ﻿using EventBusConnection;
+using EventBusConnection.Client;
+using MaintenanceDatatransfer.Controller.Create;
+using MaintenanceDatatransfer.Controller.Read;
 using MaintenanceDomain.Repositories.Interfaces;
-using MaintenanceDTO.Create;
-using MaintenanceDTO.Read;
 using MaintenanceModel.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,7 @@ namespace MaintenanceAPI.Controllers;
 [Route("/maintenance/inventory")]
 public class InventoryController : AController<Inventory, CreateInventoryDTO, InventoryDTO>
 {
-    public InventoryController(IRepository<Inventory> repo, IEventBusClient eventBusClient) : base(repo, eventBusClient)
+    public InventoryController(IRepository<Inventory> repo, IEventPublisher eventBusClient) : base(repo, eventBusClient)
     {
     }
 }

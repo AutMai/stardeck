@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EventBusConnection;
+using EventBusConnection.Client;
 using MaintenanceDomain.Repositories.Interfaces;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,11 @@ public abstract class AController<TEntity, TCreateDto, TDto> : ControllerBase
     where TCreateDto : class
     where TDto : class {
     protected IRepository<TEntity> _repo;
-    protected IEventBusClient _eventBusClient;
+    protected readonly IEventPublisher EventBusClient;
 
-    public AController(IRepository<TEntity> repo, IEventBusClient eventBusClient) {
+    public AController(IRepository<TEntity> repo, IEventPublisher eventPublisher) {
         _repo = repo;
-        _eventBusClient = eventBusClient;
+        EventBusClient = eventPublisher;
     }
 
     [HttpGet]

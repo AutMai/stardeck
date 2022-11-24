@@ -1,5 +1,5 @@
 ﻿using Crew;
-using CrewDTOs.Read;
+using CrewDatatransfer.Controller.Read;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Grpc.Net.Client;

@@ -1,14 +1,10 @@
 ﻿using System.Text.Json;
-using Castle.Core.Internal;
-using EventBusConnection;
-using EventBusConnection.EventsProcessing;
-using EventBusConnection.EventsProcessing.Events;
+using EventBusConnection.Client;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using NavigationDatatransfer.Controller.Create;
+using NavigationDatatransfer.Controller.Read;
 using NavigationDomain.Repositories.Interfaces;
-using NavigationDTOs;
-using NavigationDTOs.Create;
-using NavigationDTOs.Read;
 using NavigationModel.Entities;
 
 namespace NavigationAPI.Controllers;
@@ -16,7 +12,7 @@ namespace NavigationAPI.Controllers;
 [ApiController]
 [Route("/navigation/locations")]
 public class LocationController : AController<Location, CreateLocationDto, LocationDto> {
-    public LocationController(IRepository<Location> repo, IEventBusClient eventBusClient) : base(repo, eventBusClient) {
+    public LocationController(IRepository<Location> repo, IEventPublisher eventBusClient) : base(repo, eventBusClient) {
     }
 
     public override async Task<ActionResult<LocationDto>> ReadAsync(int id) {

@@ -1,7 +1,8 @@
 using CrewAPI.EventProcessors;
+using CrewEvent;
 using CrewModel.Configurations;
-using EventBusConnection;
-using EventBusConnection.EventsProcessing;
+using EventBusConnection.Client;
+using EventBusConnection.Events;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +14,8 @@ builder.Services.AddDbContextFactory<CrewContext>(options =>
         new MySqlServerVersion(new Version(8, 0, 27))
     ));
 
-builder.Services.AddSingleton<IEventBusClient, EventBusClient>();
-builder.Services.AddSingleton<IEventProcessor, EventProcessor<CrewEventVisitor>>();
+builder.Services.AddSingleton<IEventPublisher, EventPublisher>();
+builder.Services.AddSingleton<IEventProcessor, CrewEventProcessor>();
 builder.Services.AddHostedService<EventSubscriber>();
 
 builder.Services.AddControllers();
