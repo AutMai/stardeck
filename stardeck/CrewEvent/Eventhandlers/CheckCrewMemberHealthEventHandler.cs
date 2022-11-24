@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CrewEvent.Eventhandlers;
 
-public class CheckCrewMemberHealthEventsHandler : IEventHandler {
+public class CheckCrewMemberHealthEventHandler : IEventHandler {
     public Task Execute(IServiceScopeFactory serviceScopeFactory, string eventMessage) {
         var scope = serviceScopeFactory.CreateScope();
         var eventPublisher = scope.ServiceProvider.GetRequiredService<IEventPublisher>();
@@ -24,7 +24,7 @@ public class CheckCrewMemberHealthEventsHandler : IEventHandler {
         if (crewIds.Count > 0)
             eventPublisher.Publish(
                 JsonSerializer.Serialize(new CrewMemberCriticalHealthEvent(crewIds)));
-        
+
         return Task.CompletedTask;
     }
 }

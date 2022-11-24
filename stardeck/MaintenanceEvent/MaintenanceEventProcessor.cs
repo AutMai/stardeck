@@ -9,5 +9,6 @@ public class MaintenanceEventProcessor : AEventProcessor {
         this["ARRIVED_AT_LOCATION"] = new ArrivedAtLocationEventHandler();
         this["DEPARTED_FROM_LOCATION"] = new DepartedFromLocationEventHandler();
         this["SYSTEM_REPAIRED"] = new SystemRepairedEventHandler();
+        this["CREW_MEMBER_CRITICAL_HEALTH"] = new CrewMemberCriticalHealthEventHandler();
     }
 }
