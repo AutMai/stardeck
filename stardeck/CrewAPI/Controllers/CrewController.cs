@@ -4,6 +4,7 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Enum = System.Enum;
 
 namespace CrewAPI.Controllers;
 
@@ -45,5 +46,23 @@ public class CrewController : ControllerBase {
         };
 
         return Ok(x);
+    }
+    
+    [HttpPost("{role}")]
+    public async Task<ActionResult<ACrewDto>> CreateAsync(string role) {
+        role = role.First().ToString().ToUpper() + role[1..];
+        var roleEnum = Enum.Parse<Role>(role);
+        
+        var res = await _client.CreateCrewAsync(new CreateCrewRequest() {Health = 100, Role = roleEnum});
+        return Ok(res);
+    }
+    
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ACrewDto>> UpdateAsync(int id, [FromBody] ACrewDto crew) {
+        var res = await _client.UpdateCrewAsync(new UpdateCrewRequest() {
+            CrewMemberId = id,
+            Health = crew.Health,
+        });
+        return Ok(res);
     }
 }
