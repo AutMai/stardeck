@@ -1,0 +1,23 @@
+EventName (Publishing Service)
+	action
+	- Subscribing Service: action
+
+
+ArrivedAtLocationEvent (N):
+	- M: update CURRENT_LOCATION
+	- C: create log entry
+
+DepartedFromLocationEvent (N):
+	- M: update CURRENT_LOCATION
+	- C: create log entry
+
+SystemDamaged (M):
+	system status to fail
+	- C: send mechanic for repair -> system repaired event
+
+SystemRepaired (C mechanic):
+	- M: set system status to working 
+
+IntrudersDetected (M system):
+	- C: send guards
+

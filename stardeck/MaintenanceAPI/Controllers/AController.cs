@@ -38,7 +38,7 @@ public abstract class AController<TEntity, TCreateDto, TDto> : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete]
+    [HttpDelete("{id:int}")]
     public async Task<ActionResult> DeleteAsync(int id) {
         var e2 = await _repo.ReadAsync(id);
         if (e2 is null) return NotFound();

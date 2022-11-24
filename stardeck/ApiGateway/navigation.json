@@ -1,0 +1,99 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/navigation/location",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "DownstreamPathTemplate": "/navigation/locations"
+    },
+    {
+      "UpstreamPathTemplate": "/api/navigation/location/{id}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "DownstreamPathTemplate": "/navigation/locations/{id}"
+    },
+    
+    {
+      "UpstreamPathTemplate": "/api/navigation/location/travelTo/{name}",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "DownstreamPathTemplate": "/navigation/locations/travelTo/{name}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/navigation/location/depart",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "DownstreamPathTemplate": "/navigation/locations/depart"
+    },
+    
+    {
+      "UpstreamPathTemplate": "/api/navigation/routes",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "DownstreamPathTemplate": "/navigation/routes"
+    },
+    {
+      "UpstreamPathTemplate": "/api/navigation/routes{id}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "DownstreamPathTemplate": "/navigation/routes/{id}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5000"
+  }
+}

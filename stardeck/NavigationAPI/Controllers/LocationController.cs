@@ -54,9 +54,7 @@ public class LocationController : AController<Location, CreateLocationDto, Locat
     }
 
     [HttpPost("depart")]
-    public async Task<ActionResult<LocationDto>> DepartAsync(string name) {
-        var res = (await Repo.ReadAsync(l => l.Name == name)).SingleOrDefault();
-
+    public async Task<ActionResult<LocationDto>> DepartAsync() {
         var message =
             JsonSerializer.Serialize(new DepartedFromLocationEvent(EventType.DepartedFromLocation.ToString(), ""));
         EventBusClient.Publish(message);

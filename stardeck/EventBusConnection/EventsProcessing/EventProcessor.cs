@@ -5,10 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EventBusConnection.EventsProcessing;
 
 public class EventProcessor<TVisitor> : IEventProcessor where TVisitor : IVisitor, new() {
-    protected readonly IServiceScopeFactory ScopeFactory;
+    private readonly IServiceScopeFactory _scopeFactory;
 
     public EventProcessor(IServiceScopeFactory scopeFactory) {
-        ScopeFactory = scopeFactory;
+        _scopeFactory = scopeFactory;
     }
 
     private EventType DetermineEvent(string message) {
@@ -24,6 +24,6 @@ public class EventProcessor<TVisitor> : IEventProcessor where TVisitor : IVisito
             EventType.DepartedFromLocation => JsonSerializer.Deserialize<DepartedFromLocationEvent>(message),
             _ => JsonSerializer.Deserialize<BaseEvent>(message)
         })!;
-        e.Accept(new TVisitor {ScopeFactory = ScopeFactory});
+        e.Accept(new TVisitor {ScopeFactory = _scopeFactory});
     }
 }

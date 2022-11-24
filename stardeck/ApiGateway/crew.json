@@ -1,0 +1,69 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/crew",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+      "DownstreamPathTemplate": "/crew"
+    },
+    {
+      "UpstreamPathTemplate": "/api/crew/{id}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+      "DownstreamPathTemplate": "/crew/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/logbook",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+      "DownstreamPathTemplate": "/logbook"
+    },
+    {
+      "UpstreamPathTemplate": "/api/logbook/{id}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+      "DownstreamPathTemplate": "/logbook/{id}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5000"
+  }
+}

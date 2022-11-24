@@ -14,7 +14,7 @@ public class EventBusClient : IEventBusClient {
         _exchange = configuration1["EventBusExchange"];
 
         var factory = new ConnectionFactory() {
-            Uri = new Uri($"amqp://guest:guest@{configuration1["RabbitMQHost"]}:{configuration1["RabbitMQPort"]}/")
+            Uri = new Uri($"amqp://guest:guest@{configuration1["RabbitMQHost"]}:{configuration1["RabbitMQPort"]}/"),
         };
         try {
             _connection = factory.CreateConnection();

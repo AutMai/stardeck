@@ -19,6 +19,7 @@ public class EventSubscriber : BackgroundService {
     ) {
         _configuration = configuration;
         _eventProcessor = processor;
+        
         _exchange = _configuration["EventBusExchange"];
         var factory = new ConnectionFactory() {
             HostName = _configuration["RabbitMQHost"],
@@ -28,8 +29,8 @@ public class EventSubscriber : BackgroundService {
         _channel = _connection.CreateModel();
 
         _channel.ExchangeDeclare(_exchange, ExchangeType.Fanout);
-        _queueName = _channel.QueueDeclare().QueueName;
-        _channel.QueueBind(_queueName, _exchange, "");
+        _queueName = _channel.QueueDeclare().QueueName; // brauchen wir wenn wir queue nicht über browser erstellt haben
+        _channel.QueueBind(_queueName, _exchange, ""); // _,,_
     }
 
     protected override Task ExecuteAsync(CancellationToken token) {

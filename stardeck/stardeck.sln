@@ -34,9 +34,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrewGrpcService", "CrewGrpc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrewProtoShared", "CrewProtoShared\CrewProtoShared.csproj", "{AB226A9E-668C-4B65-8514-F0144295EED3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{188D1671-F097-4D6A-8BAB-836E6C5655D3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_EventBus", "_EventBus", "{188D1671-F097-4D6A-8BAB-836E6C5655D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusConnection", "EventBusConnection\EventBusConnection.csproj", "{B8FD8A4D-F0D0-49EE-A235-96FBB4DC3D61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{1D0EFE60-8DF0-4C63-BDE7-DAAA2AFFD300}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,5 +123,9 @@ Global
 		{B8FD8A4D-F0D0-49EE-A235-96FBB4DC3D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8FD8A4D-F0D0-49EE-A235-96FBB4DC3D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8FD8A4D-F0D0-49EE-A235-96FBB4DC3D61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0EFE60-8DF0-4C63-BDE7-DAAA2AFFD300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0EFE60-8DF0-4C63-BDE7-DAAA2AFFD300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0EFE60-8DF0-4C63-BDE7-DAAA2AFFD300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0EFE60-8DF0-4C63-BDE7-DAAA2AFFD300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CrewAPI.Controllers;
 
+[ApiController]
+[Route("/crew")]
 public class CrewController : ControllerBase {
     private readonly Crew.Crew.CrewClient _client;
 

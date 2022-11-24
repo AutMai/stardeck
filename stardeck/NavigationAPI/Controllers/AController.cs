@@ -37,7 +37,7 @@ namespace NavigationAPI.Controllers {
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteAsync(int id) {
             var e2 = await Repo.ReadAsync(id);
             if (e2 is null) return NotFound();

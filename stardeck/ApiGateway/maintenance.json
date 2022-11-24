@@ -1,0 +1,100 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/maintenance/shipinfo",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7002
+        }
+      ],
+      "DownstreamPathTemplate": "/maintenance/shipinfo"
+    },
+    {
+      "UpstreamPathTemplate": "/api/maintenance/shipinfo/{id}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7002
+        }
+      ],
+      "DownstreamPathTemplate": "/maintenance/shipinfo/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/maintenance/inventory",
+        "UpstreamHttpMethod": [
+            "GET",
+            "POST"
+        ],
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "localhost",
+                "Port": 7002
+            }
+        ],
+        "DownstreamPathTemplate": "/maintenance/inventory"
+    },
+    {
+      "UpstreamPathTemplate": "/api/maintenance/inventory/{id}",
+        "UpstreamHttpMethod": [
+            "GET",
+            "PUT",
+            "DELETE"
+        ],
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "localhost",
+                "Port": 7002
+            }
+        ],
+        "DownstreamPathTemplate": "/maintenance/inventory/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/maintenance/system",
+        "UpstreamHttpMethod": [
+            "GET",
+            "POST"
+        ],
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "localhost",
+                "Port": 7002
+            }
+        ],
+        "DownstreamPathTemplate": "/maintenance/systems"
+    },
+    {
+      "UpstreamPathTemplate": "/api/maintenance/system/{id}",
+        "UpstreamHttpMethod": [
+            "GET",
+            "PUT",
+            "DELETE"
+        ],
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+            {
+                "Host": "localhost",
+                "Port": 7002
+            }
+        ],
+        "DownstreamPathTemplate": "/maintenance/systems/{id}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5000"
+  }
+}
