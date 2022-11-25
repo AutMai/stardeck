@@ -13,7 +13,7 @@ public class HealCrewMemberEventHandler : IEventHandler {
     public Task Execute(IServiceScopeFactory serviceScopeFactory, string eventMessage) {
         var e = JsonSerializer.Deserialize<HealCrewMemberEvent>(eventMessage);
 
-        var channel = GrpcChannel.ForAddress("http://localhost:5151");
+        var channel = GrpcChannel.ForAddress("https://localhost:7151");
         var client = new Crew.Crew.CrewClient(channel);
 
         if (e.crewMemberIds.Count == 0) {

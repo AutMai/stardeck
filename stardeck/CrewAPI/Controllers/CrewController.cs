@@ -11,19 +11,21 @@ using Enum = System.Enum;
 
 namespace CrewAPI.Controllers;
 
+[ApiController]
+[Route("crew")]
 public class CrewController : ControllerBase {
     private readonly Crew.Crew.CrewClient _client;
     private readonly IEventPublisher _eventBusClient;
 
     public CrewController(IEventPublisher eventBusClient) {
         _eventBusClient = eventBusClient;
-        var channel = GrpcChannel.ForAddress("http://localhost:5151");
+        var channel = GrpcChannel.ForAddress("https://localhost:7151");
         _client = new Crew.Crew.CrewClient(channel);
     }
 
     [HttpGet]
     public async Task<ActionResult<List<ACrewDto>>> ReadAsync() {
-        var res = await _client.ReadCrewAsync(new Empty());
+        var res = _client.ReadCrew(new Empty());
         var x = res.Crew.Select(c =>
             c.Role switch {
                 "Droid" => c.Adapt<DroidDto>(),

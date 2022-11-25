@@ -14,7 +14,7 @@ public class CheckCrewMemberHealthEventHandler : IEventHandler {
         var scope = serviceScopeFactory.CreateScope();
         var eventPublisher = scope.ServiceProvider.GetRequiredService<IEventPublisher>();
 
-        var channel = GrpcChannel.ForAddress("http://localhost:5151");
+        var channel = GrpcChannel.ForAddress("https://localhost:7151");
         var client = new Crew.Crew.CrewClient(channel);
 
         var response = client.ReadCrew(new Empty());

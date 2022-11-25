@@ -14,7 +14,7 @@ public class LogbookController : ControllerBase {
     private readonly Crew.Crew.CrewClient _client;
 
     public LogbookController() {
-        var channel = GrpcChannel.ForAddress("http://localhost:5151");
+        var channel = GrpcChannel.ForAddress("https://localhost:7151");
         _client = new Crew.Crew.CrewClient(channel);
     }
 
